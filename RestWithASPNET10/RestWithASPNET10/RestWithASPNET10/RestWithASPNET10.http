@@ -1,6 +1,6 @@
 @RestWithASPNET10_HostAddress = http://localhost:5250
 
-GET {{RestWithASPNET10_HostAddress}}/weatherforecast/
+GET {{RestWithASPNET10_HostAddress}}/greenting/
 Accept: application/json
 
 ###
