@@ -23,6 +23,5 @@ namespace RestWithASPNET10.Data.DTO.V1
 		[JsonPropertyOrder(5)]
 		[JsonConverter(typeof(GenderSerializer))]
 		public string Gender { get; set; }
-		
-    }
+	}
 }

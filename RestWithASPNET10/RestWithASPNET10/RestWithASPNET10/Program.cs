@@ -10,7 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddSerilogConfiguration();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+        .AddContentNegotiations();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApi();
+builder.Services.AddSwagger();
 
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environment);
@@ -20,7 +25,6 @@ builder.Services.AddScoped<IBookService, BookService>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
-builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
@@ -30,6 +34,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
 app.MapControllers();
+
+app.UseSwaggerSpecification();
 
 app.Run();
