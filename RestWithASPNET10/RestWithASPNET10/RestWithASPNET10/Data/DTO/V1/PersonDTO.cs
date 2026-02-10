@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using RestWithASPNET10.JsonSerielizers;
+using System.Text.Json.Serialization;
 
 namespace RestWithASPNET10.Data.DTO.V1
 {
@@ -20,6 +21,7 @@ namespace RestWithASPNET10.Data.DTO.V1
 		public string Address { get; set; }
 
 		[JsonPropertyOrder(5)]
+		[JsonConverter(typeof(GenderSerializer))]
 		public string Gender { get; set; }
 		
     }
