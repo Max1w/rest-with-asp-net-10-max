@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestWithASPNET10.Models;
+using RestWithASPNET10.Data.DTO.V1;
 using RestWithASPNET10.Services.Book.Interface;
 
-namespace RestWithASPNET10.Controllers
+namespace RestWithASPNET10.Controllers.V2
 {
 	[ApiController]
-	[Route("api/[controller]")]
+	[Route("api/[controller]/v2")]
 	public class BookController : ControllerBase
     {
 		private readonly IBookService _bookService;
@@ -41,7 +41,7 @@ namespace RestWithASPNET10.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Post([FromBody] Book book)
+		public IActionResult Post([FromBody] BookDTO book)
 		{
 			_logger.LogInformation("Creating new book: {title}", book.Title);
 			var createdBook = _bookService.Create(book);
@@ -57,7 +57,7 @@ namespace RestWithASPNET10.Controllers
 		}
 
 		[HttpPut]
-		public IActionResult Put([FromBody] Book book)
+		public IActionResult Put([FromBody] BookDTO book)
 		{
 			_logger.LogInformation("Updating book with ID {id}", book.Id);
 			var createdBook = _bookService.Update(book);

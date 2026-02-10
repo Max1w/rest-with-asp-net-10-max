@@ -1,11 +1,13 @@
-﻿namespace RestWithASPNET10.Services.Book.Interface
+﻿using RestWithASPNET10.Data.DTO.V1;
+
+namespace RestWithASPNET10.Services.Book.Interface
 {
     public interface IBookService
     {
-		Models.Book Create(Models.Book book);
-		Models.Book FindById(long id);
-		List<Models.Book> FindAll();
-		Models.Book Update(Models.Book book);
+		BookDTO Create(BookDTO book);
+		BookDTO FindById(long id);
+		List<BookDTO> FindAll();
+		BookDTO Update(BookDTO book);
 		void Delete(long id);
 	}
 }

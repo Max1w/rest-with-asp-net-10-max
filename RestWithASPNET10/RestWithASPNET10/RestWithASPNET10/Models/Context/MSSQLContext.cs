@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RestWithASPNET10.Data.DTO;
 
 namespace RestWithASPNET10.Models.Context
 {

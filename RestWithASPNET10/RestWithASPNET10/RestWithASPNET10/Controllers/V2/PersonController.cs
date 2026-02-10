@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestWithASPNET10.Models;
+using RestWithASPNET10.Data.DTO.V1;
 using RestWithASPNET10.Service.Person.Interface;
 
-namespace RestWithASPNET10.Controller
+namespace RestWithASPNET10.Controller.V2
 {
 	[ApiController]
-	[Route("api/[controller]")]
+	[Route("api/[controller]/v2")]
 	public class PersonController : ControllerBase
 	{
 		private readonly IPersonService _personService;
@@ -40,7 +40,7 @@ namespace RestWithASPNET10.Controller
 		}
 
 		[HttpPost]
-		public IActionResult Post([FromBody] Person person)
+		public IActionResult Post([FromBody] PersonDTO person)
 		{
 			_logger.LogInformation("Creating new Person: {firstName}", person.FirstName);
 			var createdPerson = _personService.Create(person);
@@ -56,7 +56,7 @@ namespace RestWithASPNET10.Controller
 		}
 
 		[HttpPut]
-		public IActionResult Put([FromBody] Person person)
+		public IActionResult Put([FromBody] PersonDTO person)
 		{
 			_logger.LogInformation("Updating person with ID {id}", person.Id);
 			var createdPerson = _personService.Update(person);

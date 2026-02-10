@@ -17,8 +17,8 @@ builder.Services.AddEvolveConfiguration(builder.Configuration, builder.Environme
 
 builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IPersonRepository, PersonRepository>();
-builder.Services.AddScoped<IBookRepository, BookRepository>();
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddOpenApi();
 
